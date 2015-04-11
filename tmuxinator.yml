@@ -1,0 +1,10 @@
+# ~/.tmuxinator/transcriber.yml
+
+name: transciber
+root: ~/projects/transcriber
+
+windows:
+  - command: git status -s
+  - editor: vim
+  - repl: ipython
+
