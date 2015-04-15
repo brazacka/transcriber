@@ -1,5 +1,5 @@
-Transriber
-==========
+Transcriber
+===========
 
 Automatically attach tablature to your music.
 
