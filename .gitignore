@@ -3,7 +3,8 @@
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -80,3 +81,6 @@ docs/_build/
 
 # PyBuilder
 target/
+
+#Keep test songs clean
+*.mp3
