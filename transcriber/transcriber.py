@@ -2,6 +2,11 @@ import eyed3
 import urllib2
 from bs4 import BeautifulSoup
 
+def debug(text, severity):
+    debug_level = 1
+    if debug_level >= severity:
+        print(text)
+
 def update_version(filename, version = (2,3,0)):
     song = eyed3.load(filename)
     song.tag.version = version
@@ -9,11 +14,17 @@ def update_version(filename, version = (2,3,0)):
 
 def set_comment(filename, text, desc=u'Transcriber'):
     if check_version(filename) == (2,2,0):
-        print "Updating to version 2.3.0"
+        debug('Updating to version 2.3.0', 1)
         update_version(filename)
     song = eyed3.load(filename)
     song.tag.comments.set(text, desc)
     song.tag.save()
+
+def get_comment(filename, desc=u'Transcriber'):
+    song = eyed3.load(filename)
+    for comment in song.tag.comments:
+        if comment.description == desc:
+            return comment.text
 
 def check_version(filename):
     song = eyed3.load(filename)
@@ -66,4 +77,3 @@ def get_tab(filename):
 def write_tab(filename):
     tab = unicode(get_tab(filename))
     set_comment(filename, tab)
-
